@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
+import Purpose from "../components/Purpose";
+import Sponsored from "../components/Sponsored";
 
 export default function Home() {
   return (
@@ -12,8 +14,12 @@ export default function Home() {
       </Head>
 
       <main>
+        {/* HOME LANDING */}
         <Navbar />
         <Hero />
+        <Sponsored />
+        {/* ========== */}
+        <Purpose />
       </main>
     </div>
   );
