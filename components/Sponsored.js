@@ -9,7 +9,7 @@ function Sponsored() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:pb-8 items-center justify-center space-y-4 ">
+    <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:justify-between md:py-7 items-center justify-center space-y-4 ">
       {/* PARAGRAF */}
       <div className="">
         <p className="text-[#575757] border-t inline pt-2">

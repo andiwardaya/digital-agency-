@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
+import Button from "./Button";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ function Navbar() {
   ];
 
   return (
-    <div className=" w-full fixed md:sticky bg-transparent top-0 left-0">
+    <div className="max-w-6xl mx-auto w-full fixed md:sticky bg-transparent top-0 left-0 z-10">
       <div className="md:flex  justify-between md:items-center py-4 md:px-10 px-3">
         <div>
           <img className="w-12 cursor-pointer " src="/assets/logo-final.png" />
@@ -40,9 +41,7 @@ function Navbar() {
                 </Link>
               </li>
             ))}
-            <button className=" ml-8 md:ml-0 bg-[#010AE9] py-2 px-4 rounded-full shadow-xl text-white hover:bg-blue-400">
-              Sign Up
-            </button>
+            <Button>Sign Up</Button>
           </ul>
         </div>
       </div>

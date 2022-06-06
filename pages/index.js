@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Help from "../components/Help";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Purpose from "../components/Purpose";
@@ -20,6 +21,7 @@ export default function Home() {
         <Sponsored />
         {/* ========== */}
         <Purpose />
+        <Help />
       </main>
     </div>
   );
