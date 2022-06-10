@@ -7,3 +7,9 @@
     font-family: Helvetica, system-ui, sans-serif;
   }
 }
+
+@layer components {
+  .basic-button {
+    @apply ml-8 md:ml-0 bg-[#010AE9] py-2 px-4 rounded-full shadow-xl text-white hover:bg-blue-400;
+  }
+}

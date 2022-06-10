@@ -1,21 +1,22 @@
 import Head from "next/head";
 import Feature from "../components/Feature";
+import Footer from "../components/Footer";
 import Future from "../components/Future";
 import Help from "../components/Help";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Purpose from "../components/Purpose";
 import Sponsored from "../components/Sponsored";
+import Testimonial from "../components/Testimonial";
 
 export default function Home() {
   const featureData = [
     {
-      title: "Great customer relationship starts here",
-      desc: "Schedule",
-      para: "80 days around the world, well find a pot of gold just sitting where the rainbows ending. Time — well fight against the time, and well fly on the white wings of the wind.",
-      more: "Learn more about publishing",
-      imgSrc: "/assets/card-carousel.png",
-      more: "Learn more about publishing",
+      title: "Introducing best mobile carousels",
+      desc: "Monitor",
+      para: "Before the ship is really back. Round, round, all around the world. Round, all around the world. Round, all around the world. Round, all around the world.",
+      imgSrc: "/assets/card-customer.png",
+      more: "Learn more about monitor",
     },
   ];
   return (
@@ -35,7 +36,7 @@ export default function Home() {
         <Purpose />
         <Help />
 
-        <div className="m-w-3xl mx-auto md:flex  md:items-center">
+        <div className="max-w-6xl mx-auto md:flex  md:items-center">
           <Feature
             imgSrc={"/assets/card-carousel.png"}
             desc={"Schedule"}
@@ -47,7 +48,7 @@ export default function Home() {
           />
         </div>
         {/* Versi mapping  */}
-        <div className="m-w-3xl mx-auto md:flex md:flex-row-reverse  md:items-center">
+        <div className="max-w-6xl mx-auto md:flex md:flex-row-reverse  md:items-center">
           {featureData.map((data) => (
             <Feature
               title={data.title}
@@ -58,8 +59,9 @@ export default function Home() {
             />
           ))}
         </div>
-
         <Future />
+        <Testimonial />
+        <Footer />
       </main>
     </div>
   );

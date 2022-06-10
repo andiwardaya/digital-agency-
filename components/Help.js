@@ -5,7 +5,7 @@ import { SearchIcon, CogIcon, FastForwardIcon } from "@heroicons/react/solid";
 
 function Help() {
   return (
-    <div className="m-w-3xl mx-auto text-center py-16 px-5 space-y-3">
+    <div className="max-w-6xl mx-auto text-center py-16 px-5 space-y-3">
       {/* TITLE */}
       <div className="py-10 space-y-3">
         <h1 className="text-3xl font-bold ">How can we help your business?</h1>

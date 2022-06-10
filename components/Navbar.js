@@ -6,18 +6,23 @@ import Button from "./Button";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const NavLink = [
-    { name: "About Us", alamat: "/" },
-    { name: "Team", alamat: "/" },
-    { name: "Portfolio", alamat: "/" },
-    { name: "Blog", alamat: "/" },
-    { name: "Faq", alamat: "/" },
+    { name: "About Us", alamat: "/about" },
+    { name: "Team", alamat: "/team" },
+    { name: "Portfolio", alamat: "/portofolio" },
+    { name: "Blog", alamat: "blog/" },
+    { name: "Faq", alamat: "/Faq" },
   ];
 
   return (
     <div className="max-w-6xl mx-auto w-full fixed md:sticky bg-transparent top-0 left-0 z-10">
       <div className="md:flex  justify-between md:items-center py-4 md:px-10 px-3">
         <div>
-          <img className="w-12 cursor-pointer " src="/assets/logo-final.png" />
+          <Link href="/">
+            <img
+              className="w-12 cursor-pointer "
+              src="/assets/logo-final.png"
+            />
+          </Link>
         </div>
         <div
           onClick={() => setOpen(!open)}
