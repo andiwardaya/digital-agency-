@@ -9,7 +9,7 @@ function Navbar() {
     { name: "About Us", alamat: "/about" },
     { name: "Team", alamat: "/team" },
     { name: "Portfolio", alamat: "/portofolio" },
-    { name: "Blog", alamat: "blog/" },
+    { name: "Blog", alamat: "/blog" },
     { name: "Faq", alamat: "/Faq" },
   ];
 

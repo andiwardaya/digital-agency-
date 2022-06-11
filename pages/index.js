@@ -51,6 +51,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto md:flex md:flex-row-reverse  md:items-center">
           {featureData.map((data) => (
             <Feature
+              key={data.desc}
               title={data.title}
               imgSrc={data.imgSrc}
               desc={data.desc}
