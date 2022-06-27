@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Feature from "../components/Feature";
 import Footer from "../components/Footer";
 import Future from "../components/Future";
@@ -10,6 +11,28 @@ import Sponsored from "../components/Sponsored";
 import Testimonial from "../components/Testimonial";
 
 export default function Home() {
+  const [scrolling, setScrolling] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const onScroll = (e) => {
+    setScrollTop(e.target.documentElement.scrollTop);
+    setScrolling(e.target.documentElement.scrollTop > scrollTop);
+  };
+
+  useEffect(() => {
+    const onScroll = (e) => {
+      setScrollTop(e.target.documentElement.scrollTop);
+      setScrolling(e.target.documentElement.scrollTop > scrollTop);
+    };
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
+
+  useEffect(() => {
+    console.log(scrollTop);
+  }, [scrollTop]);
+
   const featureData = [
     {
       title: "Introducing best mobile carousels",
@@ -27,7 +50,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="overflow-x-hidden">
         {/* HOME LANDING */}
         <Navbar />
         <Hero />
@@ -36,7 +59,7 @@ export default function Home() {
         <Purpose />
         <Help />
 
-        <div className="max-w-6xl mx-auto md:flex  md:items-center">
+        <div className="max-w-6xl mx-auto md:flex  md:items-center ">
           <Feature
             imgSrc={"/assets/card-carousel.png"}
             desc={"Schedule"}

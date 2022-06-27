@@ -14,7 +14,7 @@ function Help() {
         </p>
       </div>
       {/* CARD */}
-      <div className="space-y-8 px-16 md:flex md:items-center md:space-y-0 justify-between md:space-x-9 ">
+      <div className="space-y-8 px-2 md:px-16 md:flex md:items-center md:space-y-0 justify-between md:space-x-9 ">
         <Card
           icon={<SearchIcon />}
           title={"Find out what you need"}

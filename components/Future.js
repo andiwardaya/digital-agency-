@@ -57,7 +57,7 @@ function Future() {
       </div>
 
       {/* ===CARD==== */}
-      <div className="px-20 space-y-10  py-16 md:grid md:px-0 md:grid-cols-2 md:space-y-0 md:gap-5 md:content-center ">
+      <div className="px-10 md:px-20 space-y-10  py-16 md:grid md:px-0 md:grid-cols-2 md:space-y-0 md:gap-5 md:content-center ">
         {cardData.map((data) => (
           <div
             key={data.title}

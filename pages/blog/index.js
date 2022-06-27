@@ -21,8 +21,8 @@ function BlogPage({ posts }) {
         <h1 className="text-center text-4xl font-bold">Agency Blog Page</h1>
         <div className="grid grid-cols-1  p-6 sm:grid-cols-2  lg:grid-cols-3 gap-6  md:grid-cols-3 md:gap-10 md:p-6">
           {posts.map((post) => (
-            <Link key={post._id} href={`/post/${post.slug.current}`}>
-              <div className="group cursor-pointer  border border-gray-300  rounded-lg overflow-hidden h-auto  hover:shadow-xl h-[20rem]">
+            <Link key={post._id} href={`/blog/${post.slug.current}`}>
+              <div className="group cursor-pointer  border border-gray-300  rounded-lg overflow-hidden hover:shadow-xl h-auto]">
                 <img
                   className=" h-[10rem] w-full object-cover group-hover:scale-105 transition-transform duration-200 ease-in-out"
                   src={urlFor(post.mainImage).url()}
@@ -34,7 +34,7 @@ function BlogPage({ posts }) {
                     {" "}
                     {post.descriptionpost}
                   </p>
-                  <div className="flex  items-center justify-center md:justify-start  space-x-5">
+                  <div className="flex  items-center  justify-start  space-x-5">
                     <img
                       className="w-12 h-12 rounded-lg"
                       src={urlFor(post.author.image).url()}
