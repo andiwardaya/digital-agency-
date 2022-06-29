@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import { sanityClient, urlFor } from "../../sanity";
 import { useForm } from "react-hook-form";
 
-function singlePost({ post }) {
+function SinglePost({ post }) {
   const [submitted, setSubmitted] = useState(false);
   const {
     register,
@@ -27,6 +27,7 @@ function singlePost({ post }) {
         setSubmitted(false);
       });
   };
+
   console.log(post);
   return (
     <>
@@ -79,11 +80,7 @@ function singlePost({ post }) {
                 <li className="ml-4 list-disc">{children}</li>
               ),
               link: ({ href, children, blank }) => (
-                <a
-                  target="_blank"
-                  href={href}
-                  className="text-red-500 hover:underline"
-                >
+                <a href={href} className="text-red-500 hover:underline">
                   {children}
                 </a>
               ),
@@ -184,7 +181,7 @@ function singlePost({ post }) {
   );
 }
 
-export default singlePost;
+export default SinglePost;
 
 export async function getStaticPath() {}
 
