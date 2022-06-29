@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { sanityClient } from "../../sanity";
 import { urlFor } from "../../sanity";
 import Head from "next/head";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 function BlogPage({ posts }) {
   console.log(posts);
+
   return (
     <>
       <Navbar />

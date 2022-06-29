@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import PortableText from "react-portable-text";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { sanityClient, urlFor } from "../../sanity";
+import { useForm } from "react-hook-form";
 
 function singlePost({ post }) {
-  console.log(post);
+  const [submitted, setSubmitted] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
+  const onSubmit = async (data) => {
+    fetch("/api/createComment", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then(() => {
+        console.log(data);
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSubmitted(false);
+      });
+  };
+  console.log(post);
   return (
     <>
       <Navbar />
@@ -43,34 +64,120 @@ function singlePost({ post }) {
         </div>
 
         <article className="max-w-3xl mx-auto">
-          <div className="">
-            <PortableText
-              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-              content={post.body}
-              serializers={{
-                h1: (props) => (
-                  <h1 className="text-2xl font-bold my-5" {...props} />
-                ),
-                h2: (props) => (
-                  <h1 className="text-xl font-bold my-5" {...props} />
-                ),
-                li: ({ children }) => (
-                  <li className="ml-4 list-disc">{children}</li>
-                ),
-                link: ({ href, children, blank }) => (
-                  <a
-                    target="_blank"
-                    href={href}
-                    className="text-red-500 hover:underline"
-                  >
-                    {children}
-                  </a>
-                ),
-              }}
-            />
-          </div>
+          <PortableText
+            dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+            content={post.body}
+            serializers={{
+              h1: (props) => (
+                <h1 className="text-2xl font-bold my-5" {...props} />
+              ),
+              h2: (props) => (
+                <h1 className="text-xl font-bold my-5" {...props} />
+              ),
+              li: ({ children }) => (
+                <li className="ml-4 list-disc">{children}</li>
+              ),
+              link: ({ href, children, blank }) => (
+                <a
+                  target="_blank"
+                  href={href}
+                  className="text-red-500 hover:underline"
+                >
+                  {children}
+                </a>
+              ),
+            }}
+          />
         </article>
+        {/* GARIS */}
+        <hr className="max-w-lg my-5 mx-auto border border-blue-500" />
+        {submitted ? (
+          <div className="flex flex-col py-5 space-y-2 px-10 rounded-md border-blue-500 text-white max-w-lg mx-auto">
+            <h1 className="text-2xl font-bold">Terima kasih sudah komen</h1>
+            <h2 className="text-sm">
+              setelah disetujui oleh moderator, komen akan tampil dibawah
+              halaman postingan
+            </h2>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col  max-w-2xl mx-auto mb-10"
+          >
+            <h3 className="text-sm">enjoyed this article?</h3>
+            <h4 className="text-3xl font-bold">Leave a comment below</h4>
+            <hr className="py-3 mt-3" />
+
+            <input
+              {...register("_id")}
+              type="hidden"
+              name="_id"
+              value={post._id}
+            />
+
+            <label className="block mb-5 px-2">
+              <span className="text-gray-500">Name</span>
+              <input
+                {...register("name", { required: true })}
+                className="block w-full shadow border rounded-xl py-2 px-3 form-input mt-1 ring-blue-500 focus:ring outline-none"
+                type="text"
+                placeholder="Andiwardaya"
+              />
+            </label>
+
+            <label className="block mb-5 px-2">
+              <span className="text-gray-500">Email</span>
+              <input
+                {...register("email", { required: true })}
+                className="block w-full shadow border rounded-xl py-2 px-3 form-input mt-1 ring-blue-500 focus:ring outline-none"
+                type="text"
+                placeholder="Andiwardaya"
+              />
+            </label>
+
+            <label className="block mb-5 px-2">
+              <span className="text-gray-500">Comment</span>
+              <textarea
+                {...register("comment", { required: true })}
+                rows={8}
+                className="block w-full shadow border rounded-xl py-2 px-3 form-input mt-1 ring-blue-500 focus:ring outline-none"
+              ></textarea>
+            </label>
+
+            <div className="flex flex-col p-5">
+              {errors.name && (
+                <span className="text-red-500">nama harus dimasukan</span>
+              )}
+              {errors.email && (
+                <span className="text-red-500">email harus dimasukan</span>
+              )}
+              {errors.comment && (
+                <span className="text-red-500">comment harus dimasukan</span>
+              )}
+            </div>
+
+            <input
+              type="submit"
+              className="shadow bg-blue-500 hover:bg-blue-400 rounded-lg focus:shadow-outline focus:outline-none py-2 px-4 cursor-pointer"
+            />
+          </form>
+        )}
+
+        {/* ======COMMENT ======== */}
+        <div className="max-w-2xl mx-auto flex flex-col py-3 px-5 space-y-2 border border-blue-500">
+          <h3 className="text-2xl  font-bold">Comments</h3>
+          <hr />
+
+          {post.comments.map((comment) => (
+            <div key={comment._id}>
+              <p>
+                <span className="font-bold">{comment.name}</span>{" "}
+                {comment.comment}
+              </p>
+            </div>
+          ))}
+        </div>
       </main>
       <Footer />
     </>

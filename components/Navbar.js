@@ -23,10 +23,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollTop]);
 
-  useEffect(() => {
-    console.log(scrollTop);
-  }, [scrollTop]);
-
   const NavLink = [
     { name: "About Us", alamat: "/about" },
     { name: "Team", alamat: "/team" },
